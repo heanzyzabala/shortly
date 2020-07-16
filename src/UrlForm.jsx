@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Form, Button, Row, Col, Jumbotron } from 'react-bootstrap';
+import { Form, Button, Col, Jumbotron } from 'react-bootstrap';
 
 export default class UrlForm extends Component {
     constructor(props) {
@@ -40,7 +40,7 @@ export default class UrlForm extends Component {
         }
         return (
             <div>
-                <h1> Shorten your link </h1>
+                <h1> Shortly </h1>
                 <Jumbotron
                     className='p-5'
                     fluid>
@@ -52,6 +52,7 @@ export default class UrlForm extends Component {
                                     className='mt-3'
                                     onChange={this.onChangeHandler}
                                     type='text'
+                                    placeholder='Shorten your link'
                                     size='lg' />
                             </Col>
                             <Col sm={3}>

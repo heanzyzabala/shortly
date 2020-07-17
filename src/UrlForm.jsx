@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Form, Button, Col, Jumbotron } from 'react-bootstrap';
+import { Alert, Form, Button, Col, Jumbotron } from 'react-bootstrap';
 
 export default class UrlForm extends Component {
     constructor(props) {
@@ -44,12 +44,14 @@ export default class UrlForm extends Component {
                 <Jumbotron
                     className='p-5'
                     fluid>
+                    <Alert variant='danger'> You entered an invalid link! </Alert>
+                    <Alert variant='success'> Here is your link: <Alert.Link href='http://heanzyzabala.com/123456'> http://heanzyzabala.com/123456 </Alert.Link> </Alert>
                     {shortenedUrlView}
                     <Form onSubmit={this.onSubmitHandler}>
                         <Form.Row>
                             <Col sm={9}>
                                 <Form.Control
-                                    className='mt-3'
+                                    // className='mt-3'
                                     onChange={this.onChangeHandler}
                                     type='text'
                                     placeholder='Shorten your link'
@@ -57,7 +59,7 @@ export default class UrlForm extends Component {
                             </Col>
                             <Col sm={3}>
                                 <Button
-                                    className='mt-3'
+                                    // className='mt-3'
                                     type='submit'
                                     size='lg'
                                     variant='primary'

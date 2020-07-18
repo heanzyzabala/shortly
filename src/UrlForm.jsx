@@ -51,7 +51,6 @@ export default class UrlForm extends Component {
                         <Form.Row>
                             <Col sm={9}>
                                 <Form.Control
-                                    // className='mt-3'
                                     onChange={this.onChangeHandler}
                                     type='text'
                                     placeholder='Shorten your link'
@@ -59,7 +58,6 @@ export default class UrlForm extends Component {
                             </Col>
                             <Col sm={3}>
                                 <Button
-                                    // className='mt-3'
                                     type='submit'
                                     size='lg'
                                     variant='primary'

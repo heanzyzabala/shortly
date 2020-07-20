@@ -11,6 +11,7 @@ export default class UrlForm extends Component {
             url: null,
             shortenedUrl: null,
             isValid: null,
+            serverError: null,
         };
     }
 
@@ -19,15 +20,26 @@ export default class UrlForm extends Component {
     onSubmitHandler = async (evt) => {
         evt.preventDefault();
         const { url } = this.state;
-        const response = await axios.post('http://localhost:8080/api/shorten', { url });
-        this.setState({ shortenedUrl: `http://heanzy.zabala.com/${response.data.code}` });
+        try {
+            const response = await axios.post('http://localhost:8080/shortly/shorten', { url });
+            this.setState({ shortenedUrl: `http://localhost:8080/shortly/${response.data.code}`, isValid: true });
+        } catch (e) {
+            const { status } = e.response;
+            if (status === 422) {
+                this.setState({ isValid: false });
+            } else {
+                this.setState({ serverError: true });
+            }
+        }
     }
 
     render() {
         let alert = null;
-        const { shortenedUrl: url, isValid } = this.state;
+        const { shortenedUrl: url, isValid, serverError } = this.state;
         if (isValid != null && !isValid) {
             alert = <Alert variant="danger"> You entered an invalid link! </Alert>;
+        } else if (serverError != null && serverError) {
+            alert = <Alert variant="warning"> Uh-oh something went wrong! </Alert>;
         } else if (url) {
             alert = (
                 <Alert variant="success">

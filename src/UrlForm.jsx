@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {
-    Alert, Form, Button, Col, Jumbotron,
+    Alert, Form, Button, Col, Row, Jumbotron,
 } from 'react-bootstrap';
 
 export default class UrlForm extends Component {
@@ -19,7 +19,14 @@ export default class UrlForm extends Component {
 
     onSubmitHandler = async (evt) => {
         evt.preventDefault();
-        const { url } = this.state;
+        let { url } = this.state;
+        if (url === null) {
+            this.setState({ isValid: false });
+            return;
+        }
+        if (url.trim() !== '' && !url.trim().startsWith('http://') && !url.trim().startsWith('https://')) {
+            url = `http://${url}`;
+        }
         try {
             const response = await axios.post('http://localhost:8080/shortly/shorten', { url });
             this.setState({ shortenedUrl: `http://localhost:8080/shortly/${response.data.code}`, isValid: true });
@@ -38,7 +45,7 @@ export default class UrlForm extends Component {
         const { shortenedUrl: url, isValid, serverError } = this.state;
         if (isValid != null && !isValid) {
             alert = (
-                <Alert variant="danger">
+                <Alert variant="danger" className="fixed">
                     <Alert.Heading>Uh-oh!</Alert.Heading>
                     You entered an invalid link.
                 </Alert>
@@ -67,7 +74,7 @@ export default class UrlForm extends Component {
                     <div
                         className="text-center"
                     >
-                        <h1> Shortly </h1>
+                        <h1 className="display-3"> Shortly </h1>
                         <p className="mt-2">
                             A free, fast and simple link shortener.
                         </p>
@@ -77,24 +84,24 @@ export default class UrlForm extends Component {
                     >
                         <Form
                             onSubmit={this.onSubmitHandler}
-                            className="mb-4"
                         >
-                            <Form.Row>
+                            <Form.Row
+                                className="mb-4"
+                            >
+                                <Col sm={2} />
                                 <Col
-                                    sm={9}
-                                    md={10}
+                                    sm={6}
                                     className="mb-2"
                                 >
                                     <Form.Control
                                         onChange={this.onChangeHandler}
                                         type="text"
-                                        placeholder="Shorten your link"
+                                        placeholder="Enter URL here"
                                         size="lg"
                                     />
                                 </Col>
                                 <Col
-                                    sm={3}
-                                    md={2}
+                                    sm={2}
                                 >
                                     <Button
                                         type="submit"
@@ -105,9 +112,16 @@ export default class UrlForm extends Component {
                                         Shorten
                                     </Button>
                                 </Col>
+                                <Col sm={2} />
                             </Form.Row>
+                            <Row>
+                                <Col sm={2} />
+                                <Col sm={8}>
+                                    {alert}
+                                </Col>
+                                <Col sm={2} />
+                            </Row>
                         </Form>
-                        {alert}
                     </div>
                 </Jumbotron>
             </div>

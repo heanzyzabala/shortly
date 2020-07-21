@@ -37,13 +37,24 @@ export default class UrlForm extends Component {
         let alert = null;
         const { shortenedUrl: url, isValid, serverError } = this.state;
         if (isValid != null && !isValid) {
-            alert = <Alert variant="danger"> You entered an invalid link! </Alert>;
+            alert = (
+                <Alert variant="danger">
+                    <Alert.Heading>Uh-oh!</Alert.Heading>
+                    You entered an invalid link.
+                </Alert>
+            );
         } else if (serverError != null && serverError) {
-            alert = <Alert variant="warning"> Uh-oh something went wrong! </Alert>;
+            alert = (
+                <Alert variant="warning">
+                    <Alert.Heading>Hmmm.</Alert.Heading>
+                    Something seems to be wrong. Try again later!
+                </Alert>
+            );
         } else if (url) {
             alert = (
                 <Alert variant="success">
-                    Here is your link:
+                    <Alert.Heading>Success!</Alert.Heading>
+                    <div>Here is your link: </div>
                     <Alert.Link href={url}>
                         {url}
                     </Alert.Link>
@@ -52,34 +63,52 @@ export default class UrlForm extends Component {
         }
         return (
             <div>
-                <h1> Shortly </h1>
-                <Jumbotron
-                    className="p-5"
-                    fluid
-                >
-                    {alert}
-                    <Form onSubmit={this.onSubmitHandler}>
-                        <Form.Row>
-                            <Col sm={9}>
-                                <Form.Control
-                                    onChange={this.onChangeHandler}
-                                    type="text"
-                                    placeholder="Shorten your link"
-                                    size="lg"
-                                />
-                            </Col>
-                            <Col sm={3}>
-                                <Button
-                                    type="submit"
-                                    size="lg"
-                                    variant="primary"
-                                    block
+                <Jumbotron>
+                    <div
+                        className="text-center"
+                    >
+                        <h1> Shortly </h1>
+                        <p className="mt-2">
+                            A free, fast and simple link shortener.
+                        </p>
+                    </div>
+                    <div
+                        className="ml-5 mr-5 pt-3"
+                    >
+                        <Form
+                            onSubmit={this.onSubmitHandler}
+                            className="mb-4"
+                        >
+                            <Form.Row>
+                                <Col
+                                    sm={9}
+                                    md={10}
+                                    className="mb-2"
                                 >
-                                    Shorten
-                                </Button>
-                            </Col>
-                        </Form.Row>
-                    </Form>
+                                    <Form.Control
+                                        onChange={this.onChangeHandler}
+                                        type="text"
+                                        placeholder="Shorten your link"
+                                        size="lg"
+                                    />
+                                </Col>
+                                <Col
+                                    sm={3}
+                                    md={2}
+                                >
+                                    <Button
+                                        type="submit"
+                                        size="lg"
+                                        block
+                                        variant="primary"
+                                    >
+                                        Shorten
+                                    </Button>
+                                </Col>
+                            </Form.Row>
+                        </Form>
+                        {alert}
+                    </div>
                 </Jumbotron>
             </div>
         );

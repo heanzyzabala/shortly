@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import UrlForm from './UrlForm';
+import Navfooter from './Navfooter';
 
-export default class App extends React.Component {
+// eslint-disable-next-line react/prefer-stateless-function
+export default class App extends Component {
     render() {
         return (
-            <UrlForm/>
+            <div>
+                <UrlForm />
+                <Navfooter />
+            </div>
         );
     }
 }

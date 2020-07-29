@@ -29,7 +29,7 @@ export default class UrlForm extends Component {
         }
         try {
             const response = await axios.post('http://localhost:8080/shortly/shorten', { url });
-            this.setState({ shortenedUrl: `http://localhost:8080/shortly/${response.data.code}`, isValid: true });
+            this.setState({ shortenedUrl: `http://shortly.heanzyzabala.com/${response.data.code}`, isValid: true });
         } catch (e) {
             const { status } = e.response;
             if (status === 422) {

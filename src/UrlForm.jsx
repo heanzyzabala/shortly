@@ -28,7 +28,7 @@ export default class UrlForm extends Component {
             url = `http://${url}`;
         }
         try {
-            const response = await axios.post('http://localhost:8080/api/shorten', { url });
+            const response = await axios.post('http://shortly.heanzyzabala.com/api/shorten', { url });
             this.setState({ shortenedUrl: `http://hzab.me/${response.data.code}`, isValid: true });
         } catch (e) {
             const { status } = e.response;

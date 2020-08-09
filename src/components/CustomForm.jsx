@@ -5,7 +5,7 @@ import {
 
 import axios from 'axios';
 
-import CustomAlert from './components/CustomAlert';
+import CustomAlert from './CustomAlert';
 
 export default function CustomForm() {
     const [url, setUrl] = useState();

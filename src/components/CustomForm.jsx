@@ -3,7 +3,7 @@ import {
     Form, Button, Col, Row, Jumbotron,
 } from 'react-bootstrap';
 
-import axios from 'axios';
+import shorten from '../api';
 
 import CustomAlert from './CustomAlert';
 
@@ -14,7 +14,7 @@ export default function CustomForm() {
     async function handleOnSubmit(event) {
         event.preventDefault();
         try {
-            const response = await axios.post('http://shortly.heanzyzabala.com/api/shorten', { url });
+            const response = await shorten(url);
             setAlert(<CustomAlert variant="success" url={`http://hzab.me/${response.data.code}`} />);
         } catch (error) {
             const { status } = error.response;

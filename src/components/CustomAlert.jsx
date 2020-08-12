@@ -29,7 +29,7 @@ function get(variant, url) {
             </Alert>
         );
     default:
-        throw new Error();
+        throw new Error('Invalid Alert Variant');
     }
 }
 

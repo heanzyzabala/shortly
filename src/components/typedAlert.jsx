@@ -16,7 +16,7 @@ function get(variant, url) {
         );
     case 'danger':
         return (
-            <Alert variant="danger" className="fixed">
+            <Alert variant="danger">
                 <Alert.Heading>Uh-oh!</Alert.Heading>
                 You entered an invalid link.
             </Alert>
@@ -33,15 +33,15 @@ function get(variant, url) {
     }
 }
 
-export default function CustomAlert({ variant, url }) {
+export default function TypedAlert({ variant, url }) {
     return get(variant, url);
 }
 
-CustomAlert.propTypes = {
+TypedAlert.propTypes = {
     variant: PropTypes.string.isRequired,
     url: PropTypes.string,
 };
 
-CustomAlert.defaultProps = {
+TypedAlert.defaultProps = {
     url: '',
 };

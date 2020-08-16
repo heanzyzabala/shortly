@@ -1,0 +1,17 @@
+html, body, #root {
+    height: 100%;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white
+}
+
+$theme-colors: (
+    "primary": #74a0b1,
+    "success":  #58ab6d,
+    "warning": #d59a35,
+    "danger": #f44336
+);
+
+@import "./node_modules/bootstrap/scss/bootstrap";

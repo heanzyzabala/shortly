@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import {
     Form, Button, Col, Row,
@@ -7,7 +8,7 @@ import shorten from '../api';
 
 import TypedAlert from './typedAlert';
 
-export default function ShortenerForm() {
+export default function ShortenerForm({ style }) {
     const [url, setUrl] = useState();
     const [alert, setAlert] = useState();
 
@@ -37,7 +38,7 @@ export default function ShortenerForm() {
 
     return (
         <>
-            <Form onSubmit={handleOnSubmit}>
+            <Form style={style} onSubmit={handleOnSubmit}>
                 <Form.Row>
                     <Col sm={2} />
                     <Col sm={6} className="mb-2">
@@ -61,3 +62,12 @@ export default function ShortenerForm() {
         </>
     );
 }
+
+ShortenerForm.propTypes = {
+    // eslint-disable-next-line react/forbid-prop-types
+    style: PropTypes.object,
+};
+
+ShortenerForm.defaultProps = {
+    style: {},
+};

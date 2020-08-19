@@ -47,7 +47,7 @@ export default function App() {
             <Segment basic style={{ padding: '8em 0em', marginBottom: '-8em' }}>
                 <Grid container>
                     <Grid.Row>
-                        <Card fluid style={{ padding: '2em 2em 4em' }}>
+                        <Card fluid style={{ padding: '2em' }}>
                             <Container style={{ marginBottom: '1em' }}>
                                 <Header as="h3" textAlign="center" icon>
                                     <Icon name="staylinked" circular />
@@ -64,7 +64,7 @@ export default function App() {
                                         Shorten
                                     </Form.Field>
                                 </Form.Group>
-                                <Form.Field style={{ marginTop: '1em' }}>
+                                <Form.Field style={{ margin: '1em 1em 3em' }}>
                                     <Header sub textAlign="center" color="grey" style={{ fontSize: '10px' }}>
                                         By clicking Shorten, you are agreeing to Shortly&apos;s
                                         {' '}
@@ -125,8 +125,8 @@ export default function App() {
                             <Grid.Column width={6}>
                                 <Header inverted as="h4" content="Sources" />
                                 <List link inverted>
-                                    <List.Item as="a">Client</List.Item>
-                                    <List.Item as="a">Server</List.Item>
+                                    <List.Item as="a">Github - Client Code</List.Item>
+                                    <List.Item as="a">Github - Server Code</List.Item>
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={2}>
@@ -134,7 +134,7 @@ export default function App() {
                                     Developer
                                 </Header>
                                 <p>
-                                    heanzyzabala :)
+                                    heanzyzabala
                                 </p>
                             </Grid.Column>
                         </Grid.Row>

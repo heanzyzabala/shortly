@@ -16,7 +16,7 @@ import {
 } from 'semantic-ui-react';
 
 import shorten from './api';
-import TypedMessage from './components/typedMessage';
+import { TypedMessage, IconedHeader } from './components';
 
 export default function App() {
     const [url, setUrl] = useState();
@@ -81,32 +81,14 @@ export default function App() {
             </Segment>
             <Segment basic style={{ padding: '4em' }}>
                 <Grid container centered verticalAlign="middle" columns={3}>
-                    <Grid.Column computer={5}>
-                        <Header as="h4" textAlign="center" icon>
-                            <Icon name="heart" />
-                            Free
-                            <Header.Subheader style={{ paddingTop: '1em' }}>
-                                You can generate links with no limits.
-                            </Header.Subheader>
-                        </Header>
+                    <Grid.Column computer={5} mobile={8}>
+                        <IconedHeader icon="heart" header="Free" subHeader="You can generate links with no limits." />
                     </Grid.Column>
-                    <Grid.Column computer={5}>
-                        <Header as="h4" textAlign="center" icon>
-                            <Icon name="server" />
-                            Everlasting
-                            <Header.Subheader style={{ paddingTop: '1em' }}>
-                                Generated links are perpetually stored.
-                            </Header.Subheader>
-                        </Header>
+                    <Grid.Column computer={5} mobile={8}>
+                        <IconedHeader icon="server" header="Persistent" subHeader="Generated links are perpetually stored." />
                     </Grid.Column>
-                    <Grid.Column computer={5}>
-                        <Header as="h4" textAlign="center" icon>
-                            <Icon name="chart bar" />
-                            Analytics (Soon)
-                            <Header.Subheader style={{ paddingTop: '1em' }}>
-                                View the number of clicks your link has generated.
-                            </Header.Subheader>
-                        </Header>
+                    <Grid.Column computer={5} mobile={8}>
+                        <IconedHeader icon="chart bar" header="Analytics (Soon)" subHeader="View the number of clicks your link has generated." />
                     </Grid.Column>
                 </Grid>
             </Segment>
@@ -123,7 +105,7 @@ export default function App() {
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={6}>
-                                <Header inverted as="h4" content="Sources" />
+                                <Header inverted as="h4" content="Other Projects" />
                                 <List link inverted>
                                     <List.Item as="a">Github - Client Code</List.Item>
                                     <List.Item as="a">Github - Server Code</List.Item>

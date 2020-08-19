@@ -1,47 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 
 import {
     Container,
-    Form,
     Icon,
     Card,
-    Input,
-    Button,
     Grid,
     Header,
-    Message,
     Segment,
     List,
 } from 'semantic-ui-react';
 
-import shorten from './api';
-import { TypedMessage, IconedHeader } from './components';
+import { IconedHeader, TitleHeader, ShortenerForm } from './components';
 
 export default function App() {
-    const [url, setUrl] = useState();
-    const [message, setMessage] = useState();
-
-    async function handleOnSubmit(event) {
-        event.preventDefault();
-        try {
-            const response = await shorten(url);
-            setMessage(<TypedMessage variant="positive" url={`http://hzab.me/${response.data.code}`} />);
-        } catch (e) {
-            const { status, data } = e.response;
-            const { error } = data;
-            if (status === 422 && error === 'Invalid URL') {
-                setMessage(<TypedMessage variant="danger" />);
-            } else {
-                setMessage(<TypedMessage variant="info" />);
-            }
-        }
-    }
-
-    function handleOnChange(event) {
-        setUrl(event.target.value);
-    }
-
     return (
         <>
             <Segment basic style={{ padding: '8em 0em', marginBottom: '-8em' }}>
@@ -49,32 +21,14 @@ export default function App() {
                     <Grid.Row>
                         <Card fluid style={{ padding: '2em' }}>
                             <Container style={{ marginBottom: '1em' }}>
+                                <TitleHeader icon="staylinked" header="Shortly" subHeader="A free and simple link shortener." />
                                 <Header as="h3" textAlign="center" icon>
                                     <Icon name="staylinked" circular />
                                     <Header.Content> Shortly </Header.Content>
                                     <Header.Subheader> A free and simple link shortener. </Header.Subheader>
                                 </Header>
+                                <ShortenerForm />
                             </Container>
-                            <Form onSubmit={handleOnSubmit}>
-                                <Form.Group>
-                                    <Message success content="hello" />
-                                    <Form.Field onChange={handleOnChange} placeholder="Put your link here" control={Input} width={13} style={{ marginTop: '1em' }} />
-                                    <Form.Field fluid control={Button} width={3} style={{ marginTop: '1em' }}>
-                                        <Icon name="linkify" />
-                                        Shorten
-                                    </Form.Field>
-                                </Form.Group>
-                                <Form.Field style={{ margin: '1em 1em 3em' }}>
-                                    <Header sub textAlign="center" color="grey" style={{ fontSize: '10px' }}>
-                                        By clicking Shorten, you are agreeing to Shortly&apos;s
-                                        {' '}
-                                        <u>Terms of Service</u>
-                                        {' and '}
-                                        <u>Privacy Policy</u>
-                                    </Header>
-                                </Form.Field>
-                                {message}
-                            </Form>
                         </Card>
                     </Grid.Row>
                 </Grid>

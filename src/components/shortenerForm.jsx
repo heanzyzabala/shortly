@@ -19,7 +19,7 @@ export default function ShortenerForm() {
         event.preventDefault();
         try {
             const response = await shorten(url);
-            setMessage(<TypedMessage variant="positive" url={`http://hzab.me/${response.data.code}`} />);
+            setMessage(<TypedMessage variant="positive" url={`${process.env.REACT_APP_SHORTENED_URL_HOST}/${response.data.code}`} />);
         } catch (e) {
             const { status, data } = e.response;
             const { error } = data;

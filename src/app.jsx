@@ -9,7 +9,7 @@ import { Footer } from './components';
 export default function App() {
     return (
         <>
-            <Segment basic padded style={{ backgroundColor: '#f6f6f6' }}>
+            <Segment basic padded style={{ backgroundColor: '#f6f6f6', marginBottom: '0em' }}>
                 <Home />
             </Segment>
             <Footer />

@@ -16,7 +16,7 @@ import {
 export default function Home() {
     return (
         <>
-            <Segment basic style={{ padding: '8em 0em', marginBottom: '-8em' }}>
+            <Segment basic style={{ padding: '8em 0em', marginBottom: '-4em' }}>
                 <Grid container>
                     <Grid.Row>
                         <Card fluid style={{ padding: '2em' }}>
@@ -28,15 +28,15 @@ export default function Home() {
                     </Grid.Row>
                 </Grid>
             </Segment>
-            <Segment basic style={{ padding: '4em' }}>
-                <Grid container centered verticalAlign="middle" columns={3}>
-                    <Grid.Column computer={5} mobile={8}>
+            <Segment basic style={{ padding: '4em', marginTop: '0em' }}>
+                <Grid container centered stackable verticalAlign="middle" columns={3}>
+                    <Grid.Column computer={5}>
                         <IconedHeader icon="heart" header="Free" subHeader="You can generate links with no limits." />
                     </Grid.Column>
-                    <Grid.Column computer={5} mobile={8}>
+                    <Grid.Column computer={5}>
                         <IconedHeader icon="server" header="Persistent" subHeader="Generated links are perpetually stored." />
                     </Grid.Column>
-                    <Grid.Column computer={5} mobile={8}>
+                    <Grid.Column computer={5}>
                         <IconedHeader icon="chart bar" header="Analytics (Soon)" subHeader="View the number of clicks your link has generated." />
                     </Grid.Column>
                 </Grid>
